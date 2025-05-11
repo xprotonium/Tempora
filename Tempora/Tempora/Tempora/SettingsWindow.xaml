@@ -19,17 +19,17 @@
                 <ColumnDefinition/>
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
             </Grid.ColumnDefinitions>
-            <Image x:Name="TitleBarIcon" Source="ms-appx:///Assets/StoreLogo.png"
-                   Grid.Column="1"
-                   HorizontalAlignment="Left"
-                   Width="16" Height="16"
-                   Margin="8,0,0,0"/>
+            <Image x:Name="TitleBarIcon" Source="/Images/Square44x44Logo.png"
+                  Grid.Column="1"  
+                  HorizontalAlignment="Left"  
+                  Width="24" Height="24"  
+                  Margin="8,0,0,0"/>
             <TextBlock x:Name="TitleBarTextBlock"
                        Grid.Column="1"
                        Text="Tempora"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        VerticalAlignment="Center"
-                       Margin="28,0,0,0"/>
+                       Margin="32,0,0,0"/>
         </Grid>
 
         <ScrollViewer Margin="0,32,0,0">
@@ -113,7 +113,7 @@
                                            Description="A simple native windows timer app.">
                     <TextBlock x:Name="versionText"/>
                     <controls:SettingsExpander.HeaderIcon>
-                        <ImageIcon Source="ms-appx:///Assets/StoreLogo.png" />
+                        <ImageIcon Source="ms-appx:///Images/StoreLogo.scale-200.png" />
                     </controls:SettingsExpander.HeaderIcon>
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Header="Related links">
