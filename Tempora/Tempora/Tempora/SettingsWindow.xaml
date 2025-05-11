@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="Tempora.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Tempora"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    mc:Ignorable="d"
+    Title="Settings">
+
+    <Grid>
+        <!-- App Title Bar -->
+        <Grid x:Name="AppTitleBar" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="TitleBarIcon" Source="ms-appx:///Assets/StoreLogo.png"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   Width="16" Height="16"
+                   Margin="8,0,0,0"/>
+            <TextBlock x:Name="TitleBarTextBlock"
+                       Grid.Column="1"
+                       Text="Tempora"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       VerticalAlignment="Center"
+                       Margin="28,0,0,0"/>
+        </Grid>
+
+        <ScrollViewer Margin="0,32,0,0">
+            <StackPanel Margin="32,32,32,32"
+                        Orientation="Vertical"
+                        Spacing="4"
+                        HorizontalAlignment="Stretch">
+                <TextBlock Text="Settings"
+                           Style="{StaticResource TitleTextBlockStyle}"
+                           Margin="0,0,0,16"/>
+
+                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}"
+               Text="Timer Settings"/>
+                <controls:SettingsCard Header="Focus Time"
+                           Description="Duration of each focus session in minutes."
+                           HeaderIcon="{ui:FontIcon Glyph=&#xE916;}"
+                           HorizontalAlignment="Stretch">
+                    <NumberBox x:Name="focusTime"
+                               MaxWidth="240"
+                               SpinButtonPlacementMode="Inline"
+                               SmallChange="10"
+                               Minimum="1"
+                               Maximum="360"
+                               ValueChanged="FocusTime_ValueChanged"/>
+                </controls:SettingsCard>
+
+                <controls:SettingsExpander Header="Breaks"
+                                           Description="Adjust the duration and the number of breaks for your sessions."
+                                           HeaderIcon="{ui:FontIcon Glyph=&#xEC32;}"
+                                           HorizontalAlignment="Stretch">
+                    <!-- Break Duration -->
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="Break Duration"
+                                               Description="Duration of each break in minutes.">
+                            <NumberBox x:Name="breakTime"
+                                       SpinButtonPlacementMode="Inline"
+                                       SmallChange="10"
+                                       Minimum="1"
+                                       Maximum="360"
+                                       ValueChanged="BreakTime_ValueChanged"
+                                       HorizontalAlignment="Stretch"/>
+                        </controls:SettingsCard>
+                        <controls:SettingsCard Header="Number of Breaks"
+                                   Description="How many break intervals per focus session.">
+                            <NumberBox x:Name="numberOfBreaks"
+                                       SpinButtonPlacementMode="Inline"
+                                       SmallChange="1"
+                                       Minimum="1"
+                                       Maximum="5"
+                                       ValueChanged="NumberOfBreaks_ValueChanged"
+                                       HorizontalAlignment="Stretch"/>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+
+                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="Appearance"/>
+                <controls:SettingsCard Header="Theme"
+                                       Description="Select your preferred appearance mode."
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                    <ComboBox x:Name="themeSelector"
+                              SelectionChanged="ThemeSelector_SelectionChanged"
+                              Loaded="ThemeSelector_Loaded">
+                        <x:String>Light</x:String>
+                        <x:String>Dark</x:String>
+                        <x:String>Use system setting</x:String>
+                    </ComboBox>
+                </controls:SettingsCard>
+
+                <controls:SettingsCard Header="Window Backdrop"
+                                       Description="Backdrop that will be used across Tempora">
+                    <ComboBox x:Name="backdropSelector"
+                              Loaded="BackdropSelector_Loaded"
+                              SelectionChanged="BackdropSelector_SelectionChanged">
+                        <x:String>Mica</x:String>
+                        <x:String>MicaAlt</x:String>
+                    </ComboBox>
+                </controls:SettingsCard>
+
+                <TextBlock Style="{StaticResource BodyStrongTextBlockStyle}" Text="About"/>
+                <controls:SettingsExpander Header="Tempora"
+                                           Description="A simple native windows timer app.">
+                    <TextBlock x:Name="versionText"/>
+                    <controls:SettingsExpander.HeaderIcon>
+                        <ImageIcon Source="ms-appx:///Assets/StoreLogo.png" />
+                    </controls:SettingsExpander.HeaderIcon>
+                    <controls:SettingsExpander.Items>
+                        <controls:SettingsCard Header="Related links">
+                            <StackPanel>
+                                <HyperlinkButton Content="GitHub Repository" NavigateUri="https://github.com/xprotonium"/>
+                                <HyperlinkButton Content="Release Notes" NavigateUri="https://github.com/xprotonium"/>
+                            </StackPanel>
+                        </controls:SettingsCard>
+                    </controls:SettingsExpander.Items>
+                </controls:SettingsExpander>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
