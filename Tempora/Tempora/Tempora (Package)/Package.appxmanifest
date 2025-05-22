@@ -10,7 +10,7 @@
   <Identity
     Name="676cadf8-6c86-476c-952e-ec2cd9e20205"
     Publisher="CN=xprotonium"
-    Version="1.0.7.0" />
+    Version="1.0.9.0" />
 
   <mp:PhoneIdentity PhoneProductId="676cadf8-6c86-476c-952e-ec2cd9e20205" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

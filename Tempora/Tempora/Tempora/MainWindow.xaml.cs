@@ -259,8 +259,21 @@ namespace Tempora
             // Because Timer_Elapsed runs on a worker thread, marshal back to UI:
             this.DispatcherQueue.TryEnqueue(() =>
             {
-                // �timer� is your TextBlock�s x:Name
-                timer.Text = ts.ToString(@"mm\:ss");
+                // Ensure the timer does not reset after 60 minutes
+                int totalMinutes = (int)ts.TotalMinutes;
+                int seconds = ts.Seconds;
+
+                // Format the timer as hours:minutes:seconds if it exceeds 60 minutes
+                if (totalMinutes >= 60)
+                {
+                    int hours = totalMinutes / 60;
+                    int minutes = totalMinutes % 60;
+                    timer.Text = $"{hours:D2}:{minutes:D2}:{seconds:D2}";
+                }
+                else
+                {
+                    timer.Text = ts.ToString(@"mm\:ss");
+                }
             });
         }
 

@@ -35,7 +35,7 @@ namespace Tempora
             if (appWindow != null && appWindow.Presenter is OverlappedPresenter presenter)
             {
                 // Set the intial size of the window
-                appWindow.Resize(new SizeInt32(800, 600));
+                appWindow.Resize(new SizeInt32(800, 750));
 
                 // Set the minimum and maximum preferred size of the window
                 presenter.PreferredMinimumHeight = 600;

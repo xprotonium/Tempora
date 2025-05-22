@@ -113,7 +113,7 @@
                                            Description="A simple native windows timer app.">
                     <TextBlock x:Name="versionText"/>
                     <controls:SettingsExpander.HeaderIcon>
-                        <ImageIcon Source="ms-appx:///Images/StoreLogo.scale-200.png" />
+                        <ImageIcon Source="/Images/StoreLogo.png" />
                     </controls:SettingsExpander.HeaderIcon>
                     <controls:SettingsExpander.Items>
                         <controls:SettingsCard Header="Related links">

@@ -25,20 +25,18 @@
                             HorizontalAlignment="Center" 
                             Spacing="8">
                     <Button x:Name="StartButton" 
-                            Style="{ThemeResource AccentButtonStyle}" 
+                            Style="{ThemeResource DefaultButtonStyle}" 
                             Click="StartButton_Click">
                         <FontIcon Glyph="&#xF5B0;" FontSize="12"/>
                     </Button>
                     <Button x:Name="PauseButton" 
-                            Style="{ThemeResource AccentButtonStyle}" 
+                            Style="{ThemeResource DefaultButtonStyle}" 
                             Click="PauseButton_Click">
                         <FontIcon Glyph="&#xF8AE;" FontSize="12"/>
                     </Button>
                 </StackPanel>
                 <Button x:Name="StopButton" 
-                        HorizontalAlignment="Center" 
-                        Background="Red" 
-                        Foreground="Black" 
+                        HorizontalAlignment="Center"
                         Width="80"
                         Click="StopButton_Click">
                     <StackPanel Orientation="Horizontal" Spacing="4">
