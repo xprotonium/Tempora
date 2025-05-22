@@ -86,17 +86,30 @@ namespace Tempora
             if (values.TryGetValue("breakCount", out var c) && c is double cc)
                 NumberOfBreaks = (int)cc;
 
+            // Load theme settings
+            if (values.TryGetValue("theme", out var themeRaw) && themeRaw is int savedTheme)
+            {
+                if (Content is FrameworkElement root)
+                {
+                    root.RequestedTheme = (ElementTheme)savedTheme;
+                }
+            }
+
+            // Load backdrop settings
+            if (values.TryGetValue("backdrop", out var backdropRaw) && backdropRaw is string savedBackdrop)
+            {
+                if (ApiInformation.IsPropertyPresent("Microsoft.UI.Xaml.Window", "SystemBackdrop"))
+                {
+                    var kind = savedBackdrop == "MicaAlt" ? MicaKind.BaseAlt : MicaKind.Base;
+                    SystemBackdrop = new MicaBackdrop() { Kind = kind };
+                }
+            }
+
             SetupTimer(FocusDuration, BreakDuration, NumberOfBreaks);
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
             _timer.Tick += Timer_Elapsed;
             ((FrameworkElement)Content).Loaded += (_, _) => ResetSession();
-
-            // Apply Mica Backdrop
-            if (ApiInformation.IsPropertyPresent("Microsoft.UI.Xaml.Window", "SystemBackdrop"))
-            {
-                SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.Base };
-            }
         }
 
         // TIMER LOGIC
