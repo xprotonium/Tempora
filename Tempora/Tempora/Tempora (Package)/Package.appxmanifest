@@ -10,7 +10,7 @@
   <Identity
     Name="xprotonium.195109FE81113"
     Publisher="CN=C39C652B-69F3-4310-B292-C62B4F2EDEB5"
-    Version="1.0.15.0" />
+    Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="676cadf8-6c86-476c-952e-ec2cd9e20205" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -46,5 +46,6 @@
   </Applications>
 
   <Capabilities>
+    <rescap:Capability Name="runFullTrust" />
   </Capabilities>
 </Package>
